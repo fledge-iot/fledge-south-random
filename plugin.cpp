@@ -24,7 +24,7 @@ using namespace std;
 #define CONFIG	"{\"plugin\" : { \"description\" : \"" PLUGIN_NAME " data generation plugin\", " \
 			"\"type\" : \"string\", \"default\" : \"" PLUGIN_NAME "\", \"readonly\" : \"true\"}, " \
 		"\"asset\" : { \"description\" : \"Asset name\", " \
-			"\"type\" : \"string\", \"default\" : \"Random\", \"displayName\": \"Asset Name\"  } } "
+			"\"type\" : \"string\", \"default\" : \"Random\", \"displayName\": \"Asset Name\", \"mandatory\": \"true\" } } "
 		  
 /**
  * The Random plugin interface
