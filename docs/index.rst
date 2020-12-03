@@ -10,7 +10,7 @@ To create a south service with the Random plugin
 
   - Click on *South* in the left hand menu bar
 
-  - Select *random* from the plugin list
+  - Select *Random* from the plugin list
 
   - Name your service and click *Next*
 
