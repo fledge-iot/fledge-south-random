@@ -37,7 +37,7 @@ extern "C" {
 static PLUGIN_INFORMATION info = {
 	PLUGIN_NAME,              // Name
 	VERSION,                  // Version
-	0,    			  // Flags
+	SP_CONTROL,   		  // Flags
 	PLUGIN_TYPE_SOUTH,        // Type
 	"1.0.0",                  // Interface version
 	CONFIG                    // Default configuration
@@ -109,5 +109,19 @@ void plugin_shutdown(PLUGIN_HANDLE *handle)
 Random *random = (Random *)handle;
 
 	delete random;
+}
+
+bool plugin_write(PLUGIN_HANDLE *handle, string& name, string& value)
+{
+Random *random = (Random *)handle;
+
+	return random->write(name, value);
+}
+
+bool plugin_operation(PLUGIN_HANDLE *handle, string& operation, int count, PLUGIN_PARAMETER **params)
+{
+Random *random = (Random *)handle;
+
+	return random->operation(operation, count, params);
 }
 };
