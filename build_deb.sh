@@ -4,7 +4,7 @@
 
 # ./build_deb.sh -DFLEDGE_INSTALL=/some_path/Fledge
 
-mkdir build
+mkdir -p build
 cd build/
 cmake $@ ..
 make
