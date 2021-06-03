@@ -10,6 +10,7 @@
  * Author: Mark Riddoch, Massimiliano Pinto
  */
 #include <reading.h>
+#include <plugin_api.h>
 
 class Random {
 	public:
@@ -20,6 +21,8 @@ class Random {
 		{
 			m_asset_name = assetName;
 		}
+	bool	write(const std::string& name, const std::string value);
+	bool	operation(const std::string& operaiton, int count, PLUGIN_PARAMETER **params);
 
 	private:
 		long		m_lastValue;
