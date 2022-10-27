@@ -57,13 +57,15 @@ bool Random::operation(const std::string& operation, int count, PLUGIN_PARAMETER
 	{
 		if (count)
 		{
-			if (params[0]->name.compare("seed"))
+			if (! params[0]->name.compare("seed"))
 			{
 				long seed = strtol(params[0]->value.c_str(), NULL, 10);
 				srand(seed);
 			}
 			else
 			{
+				Logger::getLogger()->error("Unsupported parameter %s for control operation %s",
+						params[0]->name.c_str(), operation.c_str());
 				return false;
 			}
 		}
