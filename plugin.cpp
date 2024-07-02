@@ -56,7 +56,7 @@ PLUGIN_INFORMATION *plugin_info()
  */
 PLUGIN_HANDLE plugin_init(ConfigCategory *config)
 {
-Random *random = new Random();
+	Random *random = new Random();
 
 	if (config->itemExists("asset"))
 	{
@@ -73,16 +73,16 @@ Random *random = new Random();
 /**
  * Start the Async handling for the plugin
  */
-void plugin_start(PLUGIN_HANDLE *handle)
+void plugin_start(PLUGIN_HANDLE handle)
 {
 }
 
 /**
  * Poll for a plugin reading
  */
-Reading plugin_poll(PLUGIN_HANDLE *handle)
+Reading plugin_poll(PLUGIN_HANDLE handle)
 {
-Random *random = (Random *)handle;
+	Random *random = static_cast<Random *>(handle);
 
 	return random->takeReading();
 }
@@ -92,8 +92,8 @@ Random *random = (Random *)handle;
  */
 void plugin_reconfigure(PLUGIN_HANDLE *handle, string& newConfig)
 {
-ConfigCategory	config("random", newConfig);
-Random		*random = (Random *)*handle;
+	ConfigCategory  config("random", newConfig);
+	Random          *random = static_cast<Random *>(*handle);
 
 	if (config.itemExists("asset"))
 	{
@@ -104,23 +104,23 @@ Random		*random = (Random *)*handle;
 /**
  * Shutdown the plugin
  */
-void plugin_shutdown(PLUGIN_HANDLE *handle)
+void plugin_shutdown(PLUGIN_HANDLE handle)
 {
-Random *random = (Random *)handle;
+	Random *random = static_cast<Random *>(handle);
 
 	delete random;
 }
 
-bool plugin_write(PLUGIN_HANDLE *handle, string& name, string& value)
+bool plugin_write(PLUGIN_HANDLE handle, string& name, string& value)
 {
-Random *random = (Random *)handle;
+	Random *random = static_cast<Random *>(handle);
 
 	return random->write(name, value);
 }
 
-bool plugin_operation(PLUGIN_HANDLE *handle, string& operation, int count, PLUGIN_PARAMETER **params)
+bool plugin_operation(PLUGIN_HANDLE handle, string& operation, int count, PLUGIN_PARAMETER **params)
 {
-Random *random = (Random *)handle;
+	Random *random = static_cast<Random *>(handle);
 
 	return random->operation(operation, count, params);
 }
